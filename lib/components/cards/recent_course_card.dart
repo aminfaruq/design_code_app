@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class RecentCourseCard extends StatelessWidget {
   final Course course;
 
-  const RecentCourseCard({required this.course, Key? key}) : super(key: key);
+  const RecentCourseCard({required this.course, super.key});
 
   @override
   Widget build(BuildContext context) {
