@@ -1,0 +1,32 @@
+name: design_code_app
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.2.4 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/badges/
+    - assets/certificates/
+    - assets/icons/
+    - assets/illustrations/
+    - assets/images/
+    - assets/logos/
+  fonts:
+    - family: SF Pro Text
+      fonts:
+        - asset: assets/fonts/SFProText-Regular.ttf
+        - asset: assets/fonts/SFProText-Bold.ttf
+          weight: 800
