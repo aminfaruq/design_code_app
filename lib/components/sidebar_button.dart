@@ -1,18 +1,19 @@
-import 'dart:developer';
-
 import 'package:design_code_app/constants.dart';
 import 'package:flutter/material.dart';
 
 class SidebarButton extends StatelessWidget {
+  final Function triggerAnimation;
+
   const SidebarButton({
     super.key,
+    required this.triggerAnimation,
   });
 
   @override
   Widget build(BuildContext context) {
     return RawMaterialButton(
       onPressed: () {
-        log('Side bar presed');
+        triggerAnimation();
       },
       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
       highlightColor: Colors.transparent,

@@ -2,6 +2,7 @@ import 'package:design_code_app/components/home_screen_navbar.dart';
 import 'package:design_code_app/components/lists/explore_course_list.dart';
 import 'package:design_code_app/components/lists/recent_course_list.dart';
 import 'package:design_code_app/constants.dart';
+import 'package:design_code_app/screens/sidebar_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,15 +14,53 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Container(
-          color: kBackgroundColor,
-          child: SafeArea(
+      home: HomeScreen(),
+    );
+  }
+}
+
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({
+    super.key,
+  });
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
+  late Animation<Offset> sidebarAnimation;
+  late AnimationController sidebarAnimationController;
+
+  @override
+  void initState() {
+    super.initState();
+    sidebarAnimationController = AnimationController(
+        vsync: this, duration: const Duration(microseconds: 250));
+
+    sidebarAnimation = Tween<Offset>(
+      begin: const Offset(-1, 0),
+      end: const Offset(0, 0),
+    ).animate(CurvedAnimation(
+        parent: sidebarAnimationController, curve: Curves.easeInOut));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        color: kBackgroundColor,
+        child: Stack(children: [
+          SafeArea(
             child: Column(
               children: [
-                const HomeScreenNavBar(),
+                HomeScreenNavBar(
+                  triggerAnimation: () {
+                    sidebarAnimationController.forward();
+                  },
+                ),
                 SingleChildScrollView(
                   child: Column(
                     children: [
@@ -68,7 +107,10 @@ class MainApp extends StatelessWidget {
               ],
             ),
           ),
-        ),
+          SlideTransition(
+              position: sidebarAnimation,
+              child: const SafeArea(bottom: false, child: SidebarScreen()))
+        ]),
       ),
     );
   }
