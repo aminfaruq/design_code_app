@@ -36,28 +36,38 @@ class RecentCourseCard extends StatelessWidget {
       decoration: BoxDecoration(
           gradient: course.background,
           borderRadius: BorderRadius.circular(41.0)),
-      child: Padding(
-        padding: const EdgeInsets.only(
-          top: 32.0,
-          left: 32.0,
-          right: 32.0,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              course.courseSubtitle,
-              style: kCardSubtitleStyle,
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(
+              top: 32.0,
+              left: 32.0,
+              right: 32.0,
             ),
-            const SizedBox(
-              height: 6.0,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  course.courseSubtitle,
+                  style: kCardSubtitleStyle,
+                ),
+                const SizedBox(
+                  height: 6.0,
+                ),
+                Text(
+                  course.courseTitle,
+                  style: kCardTitleStyle,
+                )
+              ],
             ),
-            Text(
-              course.courseTitle,
-              style: kCardTitleStyle,
-            )
-          ],
-        ),
+          ),
+          Expanded(
+            child: Image.asset(
+              'assets/illustrations/${course.illustration}',
+              fit: BoxFit.cover,
+            ),
+          )
+        ],
       ),
     );
   }
