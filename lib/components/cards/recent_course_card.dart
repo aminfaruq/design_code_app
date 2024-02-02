@@ -41,24 +41,33 @@ class RecentCourseCard extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        course.courseSubtitle,
-                        style: kCardSubtitleStyle,
+                      Hero(
+                        tag: course.courseSubtitle,
+                        child: Text(
+                          course.courseSubtitle,
+                          style: kCardSubtitleStyle,
+                        ),
                       ),
                       const SizedBox(
                         height: 6.0,
                       ),
-                      Text(
-                        course.courseTitle,
-                        style: kCardTitleStyle,
+                      Hero(
+                        tag: course.courseTitle,
+                        child: Text(
+                          course.courseTitle,
+                          style: kCardTitleStyle,
+                        ),
                       )
                     ],
                   ),
                 ),
                 Expanded(
-                  child: Image.asset(
-                    'assets/illustrations/${course.illustration}',
-                    fit: BoxFit.cover,
+                  child: Hero(
+                    tag: course.illustration,
+                    child: Image.asset(
+                      'assets/illustrations/${course.illustration}',
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 )
               ],
@@ -78,10 +87,13 @@ class RecentCourseCard extends StatelessWidget {
                       blurRadius: 16.0)
                 ]),
             padding: const EdgeInsets.all(12.0),
-            child: Image.asset(
-              'assets/logos/${course.logo}',
-              width: 60.0,
-              height: 60.0,
+            child: Hero(
+              tag: course.logo,
+              child: Image.asset(
+                'assets/logos/${course.logo}',
+                width: 60.0,
+                height: 60.0,
+              ),
             ),
           ),
         )
