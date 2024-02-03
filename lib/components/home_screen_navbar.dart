@@ -29,8 +29,8 @@ class HomeScreenNavBar extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const ProfileScreen()));
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => ProfileScreen()));
             },
             child: const CircleAvatar(
               radius: 18.0,
